@@ -2,43 +2,43 @@
     {
         "id":1,
         "nom": "wok de boeuf",
-        "durée": 45,
-        "catégorie": "healthy",
-        "image":"images/wok-de-boeuf.jpeg"
+        "duree": 45,
+        "categorie": "healthy",
+        "image":"images/wok.jpeg"
     },
     {
         "id":2,
         "nom": "spaghetti bolognaise",
-        "durée": 180,
-        "catégorie": "confort food",
+        "duree": 180,
+        "categorie": "confort food",
         "image": "images/spaghetti-bolognaise.jpeg"
     },
     {
         "id":3,
         "nom": "Toast avocat",
-        "durée": 15,
-        "catégorie": "petit dej",
+        "duree": 15,
+        "categorie": "petit dej",
         "image": "images/toast-avocat.jpg"
     },
     {
         "id":4,
         "nom": "Poulet roti",
-        "durée": 60,
-        "catégorie": "confort food",
+        "duree": 60,
+        "categorie": "confort food",
         "image": "images/poulet-roti.webp"
     },
     {
         "id":5,
         "nom": "quiche",
-        "durée": 45,
-        "catégorie": "healthy",
+        "duree": 45,
+        "categorie": "healthy",
         "image": "images/quiche.webp"
     },
     {
         "id":6,
         "nom": "oeufs et bacon",
-        "durée": 45,
-        "catégorie": "petit dej",
+        "duree": 45,
+        "categorie": "petit dej",
         "image": "images/oeufs-et-bacon.jpg"
     }
 ]

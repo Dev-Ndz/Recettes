@@ -1,0 +1,11 @@
+header{
+    display:flex;
+    color : teal;
+    justify-content :center;
+}
+
+.miniature {
+    flex: 1;
+    margin : 5 px;
+    background-color : teal;
+}
