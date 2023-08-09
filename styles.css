@@ -4,8 +4,38 @@ header{
     justify-content :center;
 }
 
+/* .miniature {
+    display : grid;
+    grid-template-columns: repeat(3, 1fr);
+    
+} */
+
 .miniature {
-    flex: 1;
-    margin : 5 px;
-    background-color : teal;
+    display : flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    
+}
+
+.miniature article{
+    margin: 10px;
+    background-color : rgb(230, 240, 240);
+    width: 200px;
+    border-radius : 5px;
+}
+
+article img{
+    width : 200px;
+    height: 200px;
+}
+
+article h2{
+    margin: 10px;
+}
+article p{
+    margin:0px;
+    margin-left: 10px;
+    
+
+
 }
