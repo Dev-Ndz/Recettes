@@ -5,7 +5,7 @@ for (let i = 0; i<recettes.length; i++)
 {
 
     const sectionMiniature = document.querySelector(".miniature")
-    const miniatureRecette = document.createElement("div")
+    const miniatureRecette = document.createElement("article")
 
     const imageElement = document.createElement("img");
     imageElement.src = recettes[i].image;
