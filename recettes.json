@@ -40,5 +40,12 @@
         "duree": 45,
         "categorie": "petit dej",
         "image": "images/oeufs-et-bacon.jpg"
+    },
+    {
+        "id":7,
+        "nom": "riz soufflé chocolat",
+        "duree": 70,
+        "categorie": "snack",
+        "image": "images/riz-souffle.jpg"
     }
 ]

@@ -1,6 +1,10 @@
 const reponse = await fetch('recettes.json');
 const recettes = await reponse.json();
 
+/*******************************************
+ * Initialisation des miniatures de recettes
+ *******************************************/
+
 for (let i = 0; i<recettes.length; i++)
 {
     const sectionMiniature = document.querySelector(".miniature")
@@ -22,29 +26,42 @@ for (let i = 0; i<recettes.length; i++)
     miniatureRecette.appendChild(categorieElement);
 }
 
-for (let i = 0; i<recettes.length; i++){
-    
-    let categorie = [] ;
-    let existeDeja = false;
 
-    for (let j = 0; j < categorie.length;j++){
-        if (categorie.length <= 0){
-            break;
-        }else{        
-            console.log(categorie.length);
-            console.log(`recettes[${i}].categorie = ${recettes[i].categorie} / categorie[${j}] = ${categorie[j]}`);
-            // if (recettes[i].categorie == categorie[j]){
-            //     existeDeja = true;
-            // }
-        }
+/****************************
+ * 
+ * Initialisation des filtres
+ * 
+ ****************************/
 
-    }
-    if (existeDeja==false){
-        categorie[i] = recettes[i].categorie
-        console.log(categorie.length);
-        console.log(categorie[i]);
-    }
+// Filtres par catégorie
+//**************************
+
+// Création de la liste de catégorie
+
+let categoriesImportees = recettes.map(recettes => recettes.categorie);
+//utilisation de la fonction map pour extraire la liste des catégories
+let categorie = [...new Set(categoriesImportees)];
+//utilisation de Set()pour supprimer les catégories en double
+
+// Création des boutons
+console.log(categorie.length);
+for(let i = 0 ; i < categorie.length ; i++)
+{
+    const sectionFiltres = document.querySelector(".filtres");
+    console.log(sectionFiltres);
+    const btnFiltre = document.createElement("button");
+    btnFiltre.innerText = categorie[i];
+    sectionFiltres.appendChild(btnFiltre);
+
+    btnFiltre.addEventListener("click",function(){
+        const recettesFiltrees = recettes.filter(function(recette){
+            return recette.categorie == categorie[i];
+        });
+        console.log(recettesFiltrees);
+    });
 }
+
+
 
 const btnTriCroissant = document.getElementById("btn-triCroissant");
 btnTriCroissant.addEventListener("click", function () {
@@ -52,12 +69,4 @@ btnTriCroissant.addEventListener("click", function () {
         return a.duree - b.duree;
     });
     console.log(recettes);
-});
-
-const btnFiltreHealthy = document.getElementById("btn-filtreHealthy")
-btnFiltreHealthy.addEventListener("click", function(){
-    const recettesHealthy = recettes.filter(function(recette){
-        return recette.categorie =="healthy";
-    });
-    console.log(recettesHealthy);
 });
