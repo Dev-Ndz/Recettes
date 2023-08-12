@@ -5,27 +5,29 @@ const recettes = await reponse.json();
  * Initialisation des miniatures de recettes
  *******************************************/
 
-for (let i = 0; i<recettes.length; i++)
-{
-    const sectionMiniature = document.querySelector(".miniature")
-    const miniatureRecette = document.createElement("article")
+function genererMiniatures(recettes){
+    for (let i = 0; i<recettes.length; i++)
+    {
+        const sectionMiniature = document.querySelector(".miniature")
+        const miniatureRecette = document.createElement("article")
 
-    const imageElement = document.createElement("img");
-    imageElement.src = recettes[i].image;
-    const nomElement = document.createElement("h2");
-    nomElement.innerText = recettes[i].nom;
-    const dureeElement = document.createElement("p");
-    dureeElement.innerText = `Durée : ${recettes[i].duree} minutes`;
-    const categorieElement = document.createElement("p");
-    categorieElement.innerText = recettes[i].categorie;
+        const imageElement = document.createElement("img");
+        imageElement.src = recettes[i].image;
+        const nomElement = document.createElement("h2");
+        nomElement.innerText = recettes[i].nom;
+        const dureeElement = document.createElement("p");
+        dureeElement.innerText = `Durée : ${recettes[i].duree} minutes`;
+        const categorieElement = document.createElement("p");
+        categorieElement.innerText = recettes[i].categorie;
 
-    sectionMiniature.appendChild(miniatureRecette);
-    miniatureRecette.appendChild(imageElement);
-    miniatureRecette.appendChild(nomElement);
-    miniatureRecette.appendChild(dureeElement);
-    miniatureRecette.appendChild(categorieElement);
+        sectionMiniature.appendChild(miniatureRecette);
+        miniatureRecette.appendChild(imageElement);
+        miniatureRecette.appendChild(nomElement);
+        miniatureRecette.appendChild(dureeElement);
+        miniatureRecette.appendChild(categorieElement);
+    }
 }
-
+genererMiniatures(recettes);
 
 /****************************
  * 
@@ -41,10 +43,9 @@ for (let i = 0; i<recettes.length; i++)
 let categoriesImportees = recettes.map(recettes => recettes.categorie);
 //utilisation de la fonction map pour extraire la liste des catégories
 let categorie = [...new Set(categoriesImportees)];
-//utilisation de Set()pour supprimer les catégories en double
+//utilisation de Set()pour supprimer les doublons
 
 // Création des boutons
-console.log(categorie.length);
 for(let i = 0 ; i < categorie.length ; i++)
 {
     const sectionFiltres = document.querySelector(".filtres");
@@ -57,7 +58,8 @@ for(let i = 0 ; i < categorie.length ; i++)
         const recettesFiltrees = recettes.filter(function(recette){
             return recette.categorie == categorie[i];
         });
-        console.log(recettesFiltrees);
+        document.querySelector(".miniature").innerHTML = "";
+        genererMiniatures(recettesFiltrees);
     });
 }
 
@@ -68,5 +70,6 @@ btnTriCroissant.addEventListener("click", function () {
     recettes.sort(function(a,b){
         return a.duree - b.duree;
     });
-    console.log(recettes);
+    document.querySelector(".miniature").innerHTML = "";
+    genererMiniatures(recettes);
 });
